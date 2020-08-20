@@ -2,6 +2,21 @@
 
 cdk,graphql,appsync を使ったチャットアプリ
 
+##　バックエンド
+
+- 認証
+  Cognito
+
+- API
+  Appsync
+
+## フロントエンド
+
+vue + amplify で作った
+
+- react 版
+  https://github.com/full-stack-serverless/react-chat-app-aws
+
 ## Useful commands
 
 - `npm run build` compile typescript to js
