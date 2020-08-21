@@ -6,7 +6,9 @@ cdk,graphql,appsync を使ったチャットアプリ
 
 - 認証
   Cognito
-
+  未認証ユーザーの場合はなんもできないのでそういう場合は
+  認証にIAMを使って、Userプール + IDプールで未認証用ロール使ったりする必要がある。
+https://qiita.com/youn4101/items/9bca97083f07d1b9af12
 - API
   Appsync
 
@@ -27,5 +29,7 @@ vue + amplify で作った
 - `cdk synth` emits the synthesized CloudFormation template
 
 # 参考サイト
+- 認証ディレクティブ
+https://thinkami.hatenablog.com/entry/2019/07/11/235535
 
 - https://dev.to/dabit3/full-stack-serverless-building-a-real-time-chat-app-with-graphql-cdk-appsync-and-react-1dbb?s=09
