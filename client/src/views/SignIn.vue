@@ -40,8 +40,8 @@ export default defineComponent({
   setup() {
     const router = useRouter();
 
-    const username = ref("");
-    const pw = ref("");
+    const username = ref("test2222");
+    const pw = ref("abCD1234@");
 
     const signin = async () => {
       try {

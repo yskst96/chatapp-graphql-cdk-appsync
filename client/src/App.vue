@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div id="nav"></div>
     <suspense>
       <template #default>
+        <div id="nav"></div>
         <router-view />
       </template>
       <template #fallback>loading...</template>
