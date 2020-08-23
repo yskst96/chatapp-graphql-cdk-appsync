@@ -1,4 +1,4 @@
-export const listRooms = /* GraphQL */ `
+export const ListRooms = /* GraphQL */ `
   query ListRooms($limit: Int) {
     listRooms(limit: $limit) {
       items {
@@ -6,6 +6,19 @@ export const listRooms = /* GraphQL */ `
         name
         createdAt
         updatedAt
+      }
+    }
+  }
+`;
+
+export const ListMessagesForRoom = /* GraphQL */ `
+  query ListMessagesForRoom($roomId: ID, $sortDirection: ModelSortDirection) {
+    listMessagesForRoom(roomId: $roomId, sortDirection: $sortDirection) {
+      items {
+        id
+        content
+        owner
+        createdAt
       }
     }
   }

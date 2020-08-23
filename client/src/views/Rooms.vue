@@ -14,7 +14,7 @@
 import { defineComponent, ref } from "vue";
 import { API, graphqlOperation } from "aws-amplify";
 import { GraphQLResult } from "@aws-amplify/api";
-import { listRooms } from "@/graphql/queries";
+import { ListRooms } from "@/graphql/queries";
 import { Room } from "@/types/Chat";
 
 export default defineComponent({
@@ -22,7 +22,7 @@ export default defineComponent({
   components: {},
   async setup() {
     const res = (await API.graphql(
-      graphqlOperation(listRooms, { limit: 1000 })
+      graphqlOperation(ListRooms, { limit: 1000 })
     )) as GraphQLResult<{ listRooms: { items: Room[] } }>;
 
     console.log(res);
