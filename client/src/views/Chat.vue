@@ -6,12 +6,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
-import { API, graphqlOperation } from "aws-amplify";
+import { defineComponent, ref, onUnmounted } from "vue";
+import { API } from "aws-amplify";
 import { GraphQLResult } from "@aws-amplify/api";
 
-import { useRouter, useRoute } from "vue-router";
+import { useRoute } from "vue-router";
 import { ListMessagesForRoom } from "@/graphql/queries";
+import { onCreateMessageByRoomId } from "@/graphql/subscriptions";
+import { Observable, ZenObservable } from "zen-observable-ts";
 import { Message } from "@/types/Chat";
 
 export default defineComponent({
@@ -20,6 +22,13 @@ export default defineComponent({
   async setup() {
     const route = useRoute();
     const roomId = route.params.id;
+
+    // eslint-disable-next-line prefer-const
+    let subscription: ZenObservable.Subscription;
+
+    onUnmounted(() => {
+      if (subscription && subscription.unsubscribe) subscription.unsubscribe();
+    });
 
     const messageData = (await API.graphql({
       query: ListMessagesForRoom,
@@ -31,6 +40,23 @@ export default defineComponent({
     const initMessages = messageData.data?.listMessagesForRoom.items;
 
     const messages = ref(initMessages);
+
+    const observable = (await API.graphql({
+      query: onCreateMessageByRoomId,
+      variables: {
+        roomId: roomId
+      }
+    })) as Observable<{
+      value: { data: { onCreateMessageByRoomId: Message } };
+    }>;
+
+    subscription = observable.subscribe({
+      next: subData => {
+        console.log("sub", subData.value.data.onCreateMessageByRoomId.content);
+        messages.value?.push(subData.value.data.onCreateMessageByRoomId);
+      }
+    });
+    console.log(observable);
 
     return { roomId, messages };
   }
