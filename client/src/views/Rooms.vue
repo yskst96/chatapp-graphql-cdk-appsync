@@ -21,9 +21,10 @@ export default defineComponent({
   name: "Rooms",
   components: {},
   async setup() {
-    const res = (await API.graphql(
-      graphqlOperation(ListRooms, { limit: 1000 })
-    )) as GraphQLResult<{ listRooms: { items: Room[] } }>;
+    const res = (await API.graphql({
+      query: ListRooms,
+      variables: { limit: 1000 }
+    })) as GraphQLResult<{ listRooms: { items: Room[] } }>;
 
     console.log(res);
 
