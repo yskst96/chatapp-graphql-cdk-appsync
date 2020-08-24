@@ -24,7 +24,11 @@ vue3.0のprovide/injectを使って状態管理をしようと思ったが
 これらはsetup関数の中でのみ使えるかつasync setupだと機能しないため
 APIコールの結果をもとにprovideする、みたいなことができない...。
 issue⇒ https://github.com/vuejs/vue-next/issues/1409
-Nuxt Pluginのinject/provideなら問題なさそう。
+3.0に対応したvue routerの内部でinjectを使っているのでawaitの前に
+呼ばないと機能しない。
+issue⇒https://github.com/vuejs/vue-router-next/issues/257
+
+Nuxt Pluginのinject/provideなら問題なさそう。か？
 
 ## Useful commands
 
