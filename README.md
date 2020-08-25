@@ -2,7 +2,7 @@
 
 cdk,graphql,appsync を使ったチャットアプリ
 
-##　バックエンド
+## バックエンド
 
 - 認証
   Cognito
@@ -19,7 +19,7 @@ vue + amplify で作った
 - react 版
   https://github.com/full-stack-serverless/react-chat-app-aws
 
-###　メモ
+### メモ
 vue3.0のprovide/injectを使って状態管理をしようと思ったが
 これらはsetup関数の中でのみ使えるかつasync setupだと機能しないため
 APIコールの結果をもとにprovideする、みたいなことができない...。
