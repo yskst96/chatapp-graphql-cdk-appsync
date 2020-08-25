@@ -2,6 +2,7 @@ import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
 import SignIn from "../views/SignIn.vue";
 import Rooms from "../views/Rooms.vue";
 import Chat from "@/views/Chat.vue";
+import Inject from "@/views/Inject.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -18,6 +19,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/chat/:id",
     name: "Chat",
     component: Chat
+  },
+  {
+    path: "/inject",
+    name: "Inject",
+    component: Inject
   }
 ];
 

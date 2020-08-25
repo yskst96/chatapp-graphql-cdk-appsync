@@ -22,8 +22,11 @@ vue + amplify で作った
 ### メモ
 vue3.0のprovide/injectを使って状態管理をしようと思ったが
 これらはsetup関数の中でのみ使えるかつasync setupだと機能しないため
-APIコールの結果をもとにprovideする、みたいなことができない...。
+APIコールの結果をもとにグロ-バルでreactiveなstateを初期化してprovideする、みたいなことができない...。
+現在issueが切られているが特に解決方法が見つかっていないっぽい。
 issue⇒ https://github.com/vuejs/vue-next/issues/1409
+mountedフックの中でprovideするとか試してみたけど無理だった。
+
 3.0に対応したvue routerの内部でinjectを使っているのでawaitの前に
 呼ばないと機能しない。
 issue⇒https://github.com/vuejs/vue-router-next/issues/257

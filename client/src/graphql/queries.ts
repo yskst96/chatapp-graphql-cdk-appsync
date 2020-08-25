@@ -1,4 +1,4 @@
-export const ListRooms = /* GraphQL */ `
+export const listRooms = /* GraphQL */ `
   query ListRooms($limit: Int) {
     listRooms(limit: $limit) {
       items {
